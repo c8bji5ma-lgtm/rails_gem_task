@@ -3,7 +3,8 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.all
+    @q = Task.ransack(params[:q])
+    @tasks = @q.result
   end
 
   # GET /tasks/1
@@ -46,6 +47,7 @@ class TasksController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
