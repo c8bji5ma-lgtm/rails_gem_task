@@ -19,16 +19,17 @@
     <span>ステータス</span><br>
 
     <%= f.radio_button :status_eq, '',
-          id: 'q_status_eq_blank',
           checked: params.dig(:q, :status_eq).blank? %>
-    <%= label_tag 'q_status_eq_blank', '指定なし' %>
+    <%= f.label :status_eq, '指定なし', value: '' %>
 
-    <% Task.statuses.each do |status_name, status_value| %>
-      <%= f.radio_button :status_eq,
-            status_value,
-            id: "q_status_eq_#{status_name}" %>
-      <%= label_tag "q_status_eq_#{status_name}", status_name %>
-    <% end %>
+    <%= f.radio_button :status_eq, '0' %>
+    <%= f.label :status_eq, 'todo', value: '0' %>
+
+    <%= f.radio_button :status_eq, '1' %>
+    <%= f.label :status_eq, 'doing', value: '1' %>
+
+    <%= f.radio_button :status_eq, '2' %>
+    <%= f.label :status_eq, 'done', value: '2' %>
   </div>
 
   <div>
